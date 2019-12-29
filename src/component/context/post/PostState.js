@@ -11,22 +11,22 @@ const PostState = props => {
         id: 1,
         title: "First",
         body: "here is first post",
-        comment: [],
-        like: 1
+        comment: ["1"],
+        like: 0
       },
       {
         id: 2,
         title: "Second",
         body: "here is second post",
         comment: [],
-        like: 2
+        like: 0
       },
       {
         id: 3,
         title: "Third",
         body: "here is third post",
         comment: [],
-        like: 3
+        like: 0
       }
     ],
     setcurrent: null,
@@ -62,13 +62,15 @@ const PostState = props => {
   const updatePost = post => {
     dispatch({ type: "UPDATE_POST", payload: post });
   };
-  // Set Comment post
-  const setComment = post => {
-    dispatch({ type: "SET_COMMENT", payload: post });
-  };
+
   //Add comment
-  const addComment = (comment, cominput) => {
-    console.log("addcom is", comment.id, cominput);
+  const addComment = newpost => {
+    dispatch({ type: "ADD_COMMENT", payload: newpost });
+  };
+
+  //Add Like
+  const addLike = post => {
+    dispatch({ type: "ADD_LIKE", payload: post });
   };
 
   return (
@@ -82,8 +84,8 @@ const PostState = props => {
         setCurrent,
         clearCurrent,
         updatePost,
-        setComment,
-        addComment
+        addComment,
+        addLike
       }}
     >
       {props.children}

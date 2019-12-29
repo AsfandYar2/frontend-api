@@ -8,7 +8,7 @@ const PostForm = () => {
   const [post, setPost] = useState({
     title: "",
     body: "",
-    comment: "",
+    comment: [],
     like: ""
   });
   const { title, body } = post;
@@ -18,7 +18,7 @@ const PostForm = () => {
       setPost({
         title: "",
         body: "",
-        comment: "",
+        comment: [],
         like: ""
       });
     } else {

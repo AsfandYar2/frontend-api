@@ -22,11 +22,15 @@ const postReducer = (state, action) => {
         ...state,
         current: action.payload
       };
-    case "SET_COMMENT":
+    case "ADD_COMMENT":
       return {
         ...state,
-        comment: action.payload
+        posts: state.posts.map(post =>
+          post.id === action.payload.id ? action.payload : post
+        )
       };
+    case "ADD_LIKE":
+      return {};
     case "CLEAR_CURRENT":
       return {
         ...state,
